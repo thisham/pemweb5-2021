@@ -4,10 +4,12 @@
 </p>
 
 <div align="center">
-    [![Contributors][contributors-shield]][contributors-url]
-    [![Stargazers][stars-shield]][stars-url]
-    [![Issues][issues-shield]][issues-url]
-    [![MIT License][license-shield]][license-url]
+
+[![Contributors][contributors-shield]][contributors-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
 </div>
 <br />
 
@@ -73,13 +75,6 @@ Thanks goes to these wonderful people:
 <table>
     <tr>
         <td align="center">
-            <a href="https://github.com/thisham">
-                <img src="https://avatars.githubusercontent.com/u/59078748?v=4?s=100" width="100px;" alt=""/>
-                <br />
-                <sub><b>Hamdan Yuwafi Mastu Wijaya</b></sub>
-            </a>
-        </td>
-        <td align="center">
             <a href="https://github.com/danilhendrasr">
                 <img src="https://avatars.githubusercontent.com/u/45989466?v=4?s=100" width="100px;" alt=""/>
                 <br />
@@ -94,10 +89,10 @@ Thanks goes to these wonderful people:
             </a>
         </td>
         <td align="center">
-            <a href="https://github.com/haiverr">
-                <img src="https://avatars.githubusercontent.com/u/85446290?v=4?s=100" width="100px;" alt=""/>
+            <a href="https://github.com/thisham">
+                <img src="https://avatars.githubusercontent.com/u/59078748?v=4?s=100" width="100px;" alt=""/>
                 <br />
-                <sub><b>Veronika Paskalia Sinambela</b></sub>
+                <sub><b>Hamdan Yuwafi Mastu Wijaya</b></sub>
             </a>
         </td>
         <td align="center">
@@ -107,11 +102,18 @@ Thanks goes to these wonderful people:
                 <sub><b>Pandu Prasetyo Wibowo</b></sub>
             </a>
         </td>
+        <td align="center">
+            <a href="https://github.com/haiverr">
+                <img src="https://avatars.githubusercontent.com/u/85446290?v=4?s=100" width="100px;" alt=""/>
+                <br />
+                <sub><b>Veronika Paskalia Sinambela</b></sub>
+            </a>
+        </td>
     </tr>
 </table>
 
 
-<!-- Markdown Sources -->
+<!-- MARKDOWN LINKS & IMAGES -->
 <!-- Contributors -->
 [contributors-shield]: https://img.shields.io/github/contributors/thisham/pemweb5-2021.svg?style=for-the-badge
 [contributors-url]: https://github.com/thisham/pemweb5-2021/graphs/contributors
