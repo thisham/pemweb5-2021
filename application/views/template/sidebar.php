@@ -18,13 +18,13 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a href="<?php echo base_url("admin/dashboard") ?>" class="nav-link active">
+          <a href="<?php echo base_url("admin/dashboard") ?>" class="nav-link <?php echo str_contains(uri_string(), 'admin/dashboard') ? "active" : NULL ?>">
             <i class="far fa-circle nav-icon"></i>
             <p>Dashboard</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo base_url("admin/order") ?>" class="nav-link">
+          <a href="<?php echo base_url("admin/order") ?>" class="nav-link <?php echo str_contains(uri_string(), 'admin/order') ? "active" : NULL ?>">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Order
@@ -33,7 +33,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo base_url("admin/perangkat") ?>" class="nav-link">
+          <a href="<?php echo base_url("admin/perangkat") ?>" class="nav-link <?php echo str_contains(uri_string(), 'admin/perangkat') ? "active" : NULL ?>">
             <i class="nav-icon fas fa-th"></i>
             <p>Perangkat</p>
           </a>

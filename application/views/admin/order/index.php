@@ -1,11 +1,5 @@
 <?php $this->load->view('template/meta') ?>
 <div class="wrapper">
-
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="<?php echo base_url('assets/template/backend/dist') ?>/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
-
   <!-- Navbar -->
   <?php $this->load->view('template/navbar') ?>
   <!-- /.navbar -->
