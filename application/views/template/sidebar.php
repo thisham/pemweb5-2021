@@ -24,7 +24,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="pages/widgets.html" class="nav-link">
+          <a href="<?php echo base_url("admin/order") ?>" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Order
@@ -33,7 +33,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="pages/widgets.html" class="nav-link">
+          <a href="<?php echo base_url("admin/perangkat") ?>" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>Perangkat</p>
           </a>
