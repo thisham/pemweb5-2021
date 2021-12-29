@@ -118,6 +118,10 @@ $columns = ["ID", "Nama Perangkat", "Harga (per hari)", "Status", "Aksi"];
               <input type="text" name="price" class="form-control" id="edit--device-price" placeholder="10000">
             </div>
             <div class="form-group">
+              <label for="edit--device-image-url">URL Gambar</label>
+              <input type="text" name="image_url" class="form-control" id="edit--device-image-url" placeholder="https://xxxxxxxx">
+            </div>
+            <div class="form-group">
               <label for="edit--device-description">Deskripsi</label>
               <textarea name="description" class="form-control" id="edit--device-description" style="height: 300px"></textarea>
             </div>
@@ -182,12 +186,15 @@ $columns = ["ID", "Nama Perangkat", "Harga (per hari)", "Status", "Aksi"];
     const devicePrice = selectedRow.attr("data-device-price");
     const deviceDescription = selectedRow.attr("data-device-description");
     const deviceStatus = selectedRow.attr("data-device-status");
+    const deviceImageUrl = selectedRow.attr("data-device-image-url");
     $('#edit--form').attr("action", `<?= base_url("admin/perangkat/update/") ?>${deviceID}`);
     $('#edit--device-id').val(deviceID);
     $('#edit--device-name').val(deviceName);
     $('#edit--device-price').val(devicePrice);
-    $('#edit--device-description').summernote('pasteHTML', deviceDescription);
+    if (deviceDescription)
+      $('#edit--device-description').summernote('pasteHTML', deviceDescription);
     $('#edit--device-status').val(deviceStatus);
+    $('#edit--device-image-url').val(deviceImageUrl);
   });
 </script>
 </body>

@@ -38,6 +38,7 @@ class Perangkat extends CI_Controller
       $data["harga"] = $input["price"];
       $data["deskripsi"] = $input["description"];
       $data["status"] = $input["status"];
+      $data["url_gambar"] = $input["image_url"];
       $this->M_Device->insert($data);
       $this->redirect_to_list();
     }
@@ -60,6 +61,7 @@ class Perangkat extends CI_Controller
     $data["harga"] = $input["price"];
     $data["deskripsi"] = $input["description"];
     $data["status"] = $input["status"];
+    $data["url_gambar"] = $input["image_url"];
     $this->M_Device->update($data);
     $this->redirect_to_list();
   }

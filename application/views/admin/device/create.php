@@ -28,6 +28,10 @@
               <input type="text" name="price" class="form-control" id="edit--device-price" placeholder="10000">
             </div>
             <div class="form-group">
+              <label for="edit--device-image-url">URL Gambar</label>
+              <input type="text" name="image_url" class="form-control" id="edit--device-image-url" placeholder="https://xxxxxxxx">
+            </div>
+            <div class="form-group">
               <label for="edit--device-description">Deskripsi</label>
               <textarea name="description" class="form-control" id="edit--device-description" style="height: 300px"></textarea>
             </div>
