@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2021 at 11:19 PM
+-- Generation Time: Dec 29, 2021 at 03:59 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -51,15 +51,16 @@ CREATE TABLE `device` (
   `nama` varchar(255) NOT NULL,
   `harga` int(11) NOT NULL,
   `deskripsi` text NOT NULL,
-  `url_gambar` text NOT NULL
+  `url_gambar` text NOT NULL,
+  `status` int(3) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `device`
 --
 
-INSERT INTO `device` (`id_device`, `nama`, `harga`, `deskripsi`, `url_gambar`) VALUES
-(1, 'iPhone XR', 100000, 'Testing', 'https://cf.shopee.co.id/file/f1453657426b4e11d10a2d9bc4391360');
+INSERT INTO `device` (`id_device`, `nama`, `harga`, `deskripsi`, `url_gambar`, `status`) VALUES
+(1, 'iPhone XR', 100000, '<p>&lt;p&gt;Testing&lt;br&gt;&lt;/p&gt;<br></p>', 'https://cf.shopee.co.id/file/f1453657426b4e11d10a2d9bc4391360', 0);
 
 -- --------------------------------------------------------
 
@@ -121,7 +122,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `device`
 --
 ALTER TABLE `device`
-  MODIFY `id_device` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_device` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1088;
 
 --
 -- AUTO_INCREMENT for table `order`
