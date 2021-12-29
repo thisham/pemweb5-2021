@@ -20,7 +20,8 @@ class Auth extends CI_Controller
       $this->session->set_flashdata('message_login_error', 'Login Gagal, pastikan username dan passwrod benar!');
     }
 
-    $this->load->view('login_form');
+    $data["page_title"] = "Login";
+    $this->load->view('login_form', $data);
   }
 
   public function logout()
