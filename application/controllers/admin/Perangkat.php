@@ -21,4 +21,16 @@ class Perangkat extends CI_Controller
     $this->M_Device->delete($device_id);
     redirect(base_url('admin/perangkat'));
   }
+
+  function update($device_id)
+  {
+    $input = $this->input->post();
+    $data["id_device"] = $device_id;
+    $data["nama"] = $input["name"];
+    $data["harga"] = $input["price"];
+    $data["deskripsi"] = $input["description"];
+    $data["status"] = $input["status"];
+    $this->M_Device->update($data);
+    redirect(base_url('admin/perangkat'));
+  }
 }

@@ -29,7 +29,8 @@ class M_Device extends CI_Model
 
   function update($data)
   {
-    $this->db->update('Device', $data, array("id_device" => $data["id"]));
+    var_dump($data);
+    $this->db->update('Device', $data, array("id_device" => $data["id_device"]));
   }
 
   function delete($id)
