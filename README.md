@@ -3,6 +3,8 @@
     <p align="center" style="font-weight: 600">Sistem Informasi Rental HP</p>
 </p>
 
+<img src="./sitape.png" />
+
 <div align="center">
 
 [![Contributors][contributors-shield]][contributors-url]
