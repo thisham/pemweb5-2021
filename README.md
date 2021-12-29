@@ -58,7 +58,7 @@ Aplikasi ini dibuat menggunakan:
 ## Memulai Aplikasi
 ### Persyaratan Sistem
 Sistem yang akan digunakan untuk menjalankan aplikasi ini, membutuhkan:
-- PHP versi 5.6+
+- PHP versi 8
 - MySQL versi 8 atau MariaDB versi 10
 
 ### Instalasi
