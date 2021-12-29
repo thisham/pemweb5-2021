@@ -7,6 +7,10 @@ class Dashboard extends CI_Controller
     parent::__construct();
     $this->load->model('M_Device');
     $this->load->model('M_Order');
+    $this->load->model('M_Auth');
+    if (!$this->M_Auth->current_user()) {
+      redirect('auth/login');
+    }
   }
 
   public function index()
