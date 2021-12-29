@@ -26,7 +26,7 @@
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold text-white my-3">Sewa HP <br> Kini Lebih Mudah!</h1>
         <p class="col-md-8 fs-4 text-white">Dengan device yang lebih mumpuni, temukan pengalaman baru dengan device kami. <br> Aman, Terbaik dan Terpercaya!</p>
-        <button class="btn btn-light btn-lg" type="button">Temukan Device!</button>
+        <a href="<?= base_url('devices') ?>" class="btn btn-light btn-lg" type="button">Temukan Device!</a>
       </div>
     </div>
 
