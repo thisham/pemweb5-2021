@@ -15,8 +15,6 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
         <li class="nav-item">
           <a href="<?php echo base_url("admin/dashboard") ?>" class="nav-link <?php echo str_contains(uri_string(), 'admin/dashboard') ? "active" : NULL ?>">
             <i class="far fa-circle nav-icon"></i>
@@ -32,11 +30,26 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="<?php echo base_url("admin/perangkat") ?>" class="nav-link <?php echo str_contains(uri_string(), 'admin/perangkat') ? "active" : NULL ?>">
+        <li class="nav-item <?php echo str_contains(uri_string(), 'admin/perangkat') ? "menu-open" : NULL ?>">
+          <a href="<?= base_url("admin/perangkat") ?>" class="nav-link <?php echo str_contains(uri_string(), 'admin/perangkat') ? "active" : NULL ?>">
             <i class="nav-icon fas fa-th"></i>
             <p>Perangkat</p>
+            <i class="fas fa-angle-left right"></i>
           </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?= base_url('admin/perangkat/list') ?>" class="nav-link <?php echo str_contains(uri_string(), 'admin/perangkat/list') ? "active" : NULL ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Daftar Perangkat</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url('admin/perangkat/new') ?>" class="nav-link <?php echo str_contains(uri_string(), 'admin/perangkat/new') ? "active" : NULL ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tambah Perangkat Baru</p>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>

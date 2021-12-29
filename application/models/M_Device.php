@@ -22,7 +22,7 @@ class M_Device extends CI_Model
     return $this->db->get_where('Device', array('id_device' => $id))->result();
   }
 
-  function add($data)
+  function insert($data)
   {
     $this->db->insert('Device', $data);
   }

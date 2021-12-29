@@ -40,7 +40,8 @@ $columns = ["ID", "Nama Perangkat", "Harga (per hari)", "Status", "Aksi"];
                     <td><?= $device->harga ?></td>
                     <td><?= device_status_to_string($device->status) ?></td>
                     <td>
-                      <button type="button" class="btn btn-block btn-primary edit-button" data-toggle="modal" data-target="#modal-lg" data-id-device="<?= $device->id_device ?>">Edit</button>
+                      <button type="button" class="btn btn-block btn-info view-button" data-toggle="modal" data-target="#view-modal" data-id-device="<?= $device->id_device ?>">Lihat</button>
+                      <button type="button" class="btn btn-block btn-primary edit-button" data-toggle="modal" data-target="#edit-modal" data-id-device="<?= $device->id_device ?>">Edit</button>
                       <button type="button" class="btn btn-block btn-danger delete-button" data-id-device="<?= $device->id_device ?>">Hapus</button>
                     </td>
                   </tr>
@@ -56,11 +57,49 @@ $columns = ["ID", "Nama Perangkat", "Harga (per hari)", "Status", "Aksi"];
   </div>
   <!-- /.content-wrapper -->
 
-  <div class="modal fade" id="modal-lg">
+  <div class="modal view-modal fade" id="view-modal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Large Modal</h4>
+          <h4 class="modal-title">Detail Perangkat</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <p><strong>Nama Perangkat:</strong> <span id="view--device-name"></span></p>
+          </div>
+          <div class="form-group">
+            <p style="margin-bottom: 0"><strong>Status Perangkat:</strong> <span id="view--device-status"></span></p>
+            <small class="form-text text-muted">0 = Tersedia, 1 = Dipinjam, 2 = Dalam Perbaikan</small>
+          </div>
+          <div class="form-group">
+            <p><strong>Harga per Hari:</strong> Rp<span id="view--device-price"></span></p>
+          </div>
+          <div class="form-group">
+            <label for="view--device-image">Gambar</label>
+            <img id="view--device-image" width="300" style="display: block;" />
+          </div>
+          <div class="form-group">
+            <label for="view--device-description">Deskripsi</label>
+            <p id="view--device-description" style="border-radius: 8px; border: 1px solid gray; padding: 10px;"></p>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+  <div class="modal fade" id="edit-modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Detail Perangkat</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -121,6 +160,21 @@ $columns = ["ID", "Nama Perangkat", "Harga (per hari)", "Status", "Aksi"];
     })
   });
 
+  $('.view-button').click((event) => {
+    const deviceID = event.target.getAttribute("data-id-device");
+    const selectedRow = $(`.device-${deviceID}`);
+    const deviceName = selectedRow.attr("data-device-name");
+    const devicePrice = selectedRow.attr("data-device-price");
+    const deviceDescription = selectedRow.attr("data-device-description");
+    const deviceStatus = selectedRow.attr("data-device-status");
+    const deviceImageUrl = selectedRow.attr("data-device-image-url");
+    $('#view--device-name').text(deviceName);
+    $('#view--device-price').text(devicePrice);
+    $('#view--device-description').html(deviceDescription);
+    $('#view--device-status').text(deviceStatus);
+    $('#view--device-image').attr('src', deviceImageUrl);
+  });
+
   $('.edit-button').click((event) => {
     const deviceID = event.target.getAttribute("data-id-device");
     const selectedRow = $(`.device-${deviceID}`);
@@ -132,12 +186,8 @@ $columns = ["ID", "Nama Perangkat", "Harga (per hari)", "Status", "Aksi"];
     $('#edit--device-id').val(deviceID);
     $('#edit--device-name').val(deviceName);
     $('#edit--device-price').val(devicePrice);
-    $('#edit--device-description').summernote('insertText', deviceDescription);
+    $('#edit--device-description').summernote('pasteHTML', deviceDescription);
     $('#edit--device-status').val(deviceStatus);
-  });
-
-  $('.edit--save').click(() => {
-
   });
 </script>
 </body>
