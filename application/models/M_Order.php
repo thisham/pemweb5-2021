@@ -22,7 +22,7 @@ class M_Order extends CI_Model
     return $this->db->get_where('order', array('id' => $id))->result();
   }
 
-  function add($data)
+  function insert($data)
   {
     $this->db->insert('order', $data);
   }

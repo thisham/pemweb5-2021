@@ -1,6 +1,6 @@
 <?php $this->load->view('template/meta') ?>
 <?php
-$columns = ["ID", "Perangkat yang disewa", "Harga (per hari)", "Batas Peminjaman", "Status", "Aksi"];
+$columns = ["ID", "NIK Penyewa", "Perangkat yang disewa", "Total Biaya", "Tanggal Peminjaman", "Batas Peminjaman", "Status", "Aksi"];
 ?>
 <div class="wrapper">
   <!-- Navbar -->
@@ -34,16 +34,17 @@ $columns = ["ID", "Perangkat yang disewa", "Harga (per hari)", "Batas Peminjaman
               </thead>
               <tbody>
                 <?php foreach ($order_list as $order) : ?>
-                  <tr class="order-<?= $order->order_id ?>" data-order-device-id="<?= $order->id_device ?>" data-order-start-date="<?= $order->tanggal_sewa ?>" data-order-due-date="<?= $order->tanggal_kembali ?>" data-order-price="<?= $order->harga_order ?>" data-order-status="<?= $order->status_order ?>" data-order-borrower-id="<?= $order->nik_penyewa ?>">
+                  <tr class="order-<?= $order->order_id ?>" data-order-nik-penyewa="<?= $order->nik_penyewa ?>" data-order-id="<?= $order->order_id ?>" data-order-device-id="<?= $order->id_device ?>" data-order-start-date="<?= $order->tanggal_sewa ?>" data-order-return-date="<?= $order->tanggal_kembali ?>" data-order-price="<?= $order->harga_order ?>" data-order-status="<?= $order->status_order ?>" data-order-borrower-id="<?= $order->nik_penyewa ?>">
                     <td><?= $order->order_id ?></td>
+                    <td><?= $order->nik_penyewa ?></td>
                     <td><?= $order->nama_device ?></td>
                     <td><?= $order->harga_order ?></td>
+                    <td><?= $order->tanggal_sewa ?></td>
                     <td><?= $order->tanggal_kembali ?></td>
                     <td><?= order_status_to_string($order->status_order) ?></td>
                     <td>
-                      <button type="button" class="btn btn-block btn-info view-button" data-toggle="modal" data-target="#view-modal" data-id-device="<?= $order->order_id ?>">Lihat</button>
-                      <button type="button" class="btn btn-block btn-primary edit-button" data-toggle="modal" data-target="#edit-modal" data-id-device="<?= $order->order_id ?>">Edit</button>
-                      <button type="button" class="btn btn-block btn-danger delete-button" data-id-device="<?= $order->order_id ?>">Hapus</button>
+                      <button type="button" class="btn btn-block btn-primary edit-button" data-toggle="modal" data-target="#edit-modal" data-order-id="<?= $order->order_id ?>">Edit</button>
+                      <button type="button" class="btn btn-block btn-danger delete-button" data-order-id="<?= $order->order_id ?>">Hapus</button>
                     </td>
                   </tr>
                 <?php endforeach; ?>
@@ -58,74 +59,49 @@ $columns = ["ID", "Perangkat yang disewa", "Harga (per hari)", "Batas Peminjaman
   </div>
   <!-- /.content-wrapper -->
 
-  <div class="modal view-modal fade" id="view-modal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Detail Order</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <p><strong>Nama Perangkat:</strong> <span id="view--device-name"></span></p>
-          </div>
-          <div class="form-group">
-            <p style="margin-bottom: 0"><strong>Status Perangkat:</strong> <span id="view--device-status"></span></p>
-            <small class="form-text text-muted">0 = Tersedia, 1 = Dipinjam, 2 = Dalam Perbaikan</small>
-          </div>
-          <div class="form-group">
-            <p><strong>Harga per Hari:</strong> Rp<span id="view--device-price"></span></p>
-          </div>
-          <div class="form-group">
-            <label for="view--device-image">Gambar</label>
-            <img id="view--device-image" width="300" style="display: block;" />
-          </div>
-          <div class="form-group">
-            <label for="view--device-description">Deskripsi</label>
-            <p id="view--device-description" style="border-radius: 8px; border: 1px solid gray; padding: 10px;"></p>
-          </div>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-
   <div class="modal fade" id="edit-modal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Detail Perangkat</h4>
+          <h4 class="modal-title">Edit Order</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="edit--form" action="<?= base_url("admin/perangkat/update/") ?>" method="POST">
+        <form id="edit--form" action="<?= base_url("admin/order/update/") ?>" method="POST">
           <div class="modal-body">
             <div class="form-group">
-              <input name="device_id" type="hidden" class="form-control" id="edit--device-id">
+              <label for="edit--order-borrower-id">NIK Penyewa</label>
+              <input type="text" name="borrower_id" class="form-control" id="edit--order-borrower-id" placeholder="351xxxxxxx">
             </div>
             <div class="form-group">
-              <label for="edit--device-name">Nama Perangkat</label>
-              <input type="text" name="name" class="form-control" id="edit--device-name" placeholder="Tuliskan nama perangkat">
+              <label for="edit--device-name">Perangkat yang Disewa</label>
+              <select name="id_device" id="edit--device-name" class="form-control">
+                <option value="" disabled>Pilih perangkat</option>
+                <?php foreach ($device_list as $device) : ?>
+                  <option class="edit--device-option" value="<?= $device->id_device ?>"><?= $device->nama ?></option>
+                <?php endforeach; ?>
+              </select>
             </div>
             <div class="form-group">
-              <label for="edit--device-price">Harga per Hari</label>
-              <input type="text" name="price" class="form-control" id="edit--device-price" placeholder="10000">
+              <label for="edit--order-price">Total Biaya</label>
+              <input type="text" name="price" class="form-control" id="edit--order-price" placeholder="10000">
             </div>
             <div class="form-group">
-              <label for="edit--device-description">Deskripsi</label>
-              <textarea name="description" class="form-control" id="edit--device-description" style="height: 300px"></textarea>
+              <label for="edit--order-start-date">Tanggal Penyewaan</label>
+              <input class="form-control" type="datetime-local" name="start_date" id="edit--order-start-date">
             </div>
             <div class="form-group">
-              <label for="edit--device-status">Status Perangkat</label>
-              <input type="number" name="status" class="form-control" id="edit--device-status" placeholder="Status Perangkat">
-              <small class="form-text text-muted">0 = Tersedia, 1 = Dipinjam, 2 = Dalam Perbaikan</small>
+              <label for="edit--order-return-date">Tanggal Pengembalian</label>
+              <input class="form-control" type="datetime-local" name="return_date" id="edit--order-return-date">
+            </div>
+            <div class="form-group">
+              <label for="edit--device-status">Status</label>
+              <select name="status" id="" class="form-control">
+                <option class="edit--status-option" value="0">Masih Dipinjam</option>
+                <option class="edit--status-option" value="1">Selesai</option>
+                <option class="edit--status-option" value="2">Belum Kembali Tanpa Alasan yang Jelas</option>
+              </select>
             </div>
           </div>
           <div class="modal-footer justify-content-between">
@@ -144,9 +120,8 @@ $columns = ["ID", "Perangkat yang disewa", "Harga (per hari)", "Batas Peminjaman
 <!-- ./wrapper -->
 <?php $this->load->view('template/js') ?>
 <script>
-  $('#edit--device-description').summernote();
   $('.delete-button').click((event) => {
-    const deviceID = event.target.getAttribute("data-id-device");
+    const orderID = event.target.getAttribute("data-order-id");
     Swal.fire({
       icon: 'error',
       title: 'Apakah Anda yakin ingin menghapus perangkat ini?',
@@ -156,39 +131,41 @@ $columns = ["ID", "Perangkat yang disewa", "Harga (per hari)", "Batas Peminjaman
     }).then((value) => {
       if (value.isCancelled) return;
       if (value.isConfirmed) {
-        window.location = `<?= base_url("admin/order/delete/") ?>${deviceID}`;
+        window.location = `<?= base_url("admin/order/delete/") ?>${orderID}`;
       }
     })
   });
 
-  $('.view-button').click((event) => {
-    const deviceID = event.target.getAttribute("data-id-device");
-    const selectedRow = $(`.device-${deviceID}`);
-    const deviceName = selectedRow.attr("data-device-name");
-    const devicePrice = selectedRow.attr("data-device-price");
-    const deviceDescription = selectedRow.attr("data-device-description");
-    const deviceStatus = selectedRow.attr("data-device-status");
-    const deviceImageUrl = selectedRow.attr("data-device-image-url");
-    $('#view--device-name').text(deviceName);
-    $('#view--device-price').text(devicePrice);
-    $('#view--device-description').html(deviceDescription);
-    $('#view--device-status').text(deviceStatus);
-    $('#view--device-image').attr('src', deviceImageUrl);
-  });
-
   $('.edit-button').click((event) => {
-    const deviceID = event.target.getAttribute("data-id-device");
-    const selectedRow = $(`.device-${deviceID}`);
+    const orderID = event.target.getAttribute("data-order-id");
+    console.log("target", event.target);
+    const selectedRow = $(`.order-${orderID}`);
+    const borrowerID = selectedRow.attr("data-order-nik-penyewa");
+    const deviceID = selectedRow.attr("data-order-device-id");
+    const orderStatus = selectedRow.attr("data-order-status");
     const deviceName = selectedRow.attr("data-device-name");
-    const devicePrice = selectedRow.attr("data-device-price");
-    const deviceDescription = selectedRow.attr("data-device-description");
-    const deviceStatus = selectedRow.attr("data-device-status");
-    $('#edit--form').attr("action", `<?= base_url("admin/perangkat/update/") ?>${deviceID}`);
-    $('#edit--device-id').val(deviceID);
-    $('#edit--device-name').val(deviceName);
-    $('#edit--device-price').val(devicePrice);
-    $('#edit--device-description').summernote('pasteHTML', deviceDescription);
-    $('#edit--device-status').val(deviceStatus);
+    const orderPrice = selectedRow.attr("data-order-price");
+    const orderStartDate = selectedRow.attr("data-order-start-date");
+    const orderReturnDate = selectedRow.attr("data-order-return-date");
+    console.log("start date", orderStartDate)
+
+    $('#edit--form').attr("action", `<?= base_url("admin/order/update/") ?>${orderID}`);
+    $('#edit--order-borrower-id').val(borrowerID);
+    $('#edit--order-price').val(orderPrice);
+    $('#edit--order-start-date').val(orderStartDate.replace(" ", "T").slice(0, orderStartDate.length - 3));
+    $('#edit--order-return-date').val(orderReturnDate.replace(" ", "T").slice(0, orderReturnDate.length - 3));
+
+    $('.edit--device-option').each(function() {
+      if ($(this).attr('value') === deviceID) {
+        $(this).attr('selected', 'selected');
+      }
+    });
+
+    $('.edit--status-option').each(function() {
+      if ($(this).attr('value') === orderStatus) {
+        $(this).attr('selected', 'selected');
+      }
+    });
   });
 </script>
 </body>
