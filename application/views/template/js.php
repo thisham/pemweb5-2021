@@ -20,6 +20,7 @@
 <!-- daterangepicker -->
 <script src="<?php echo base_url('assets/template/backend/plugins') ?>/moment/moment.min.js"></script>
 <script src="<?php echo base_url('assets/template/backend/plugins') ?>/daterangepicker/daterangepicker.js"></script>
+<script src="<?php echo base_url('assets/template/backend/plugins') ?>/sweetalert2/sweetalert2.all.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="<?php echo base_url('assets/template/backend/plugins') ?>/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
@@ -28,5 +29,3 @@
 <script src="<?php echo base_url('assets/template/backend/plugins') ?>/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('assets/template/backend/dist') ?>/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url('assets/template/backend/dist') ?>/js/demo.js"></script>

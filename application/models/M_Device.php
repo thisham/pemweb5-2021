@@ -34,6 +34,6 @@ class M_Device extends CI_Model
 
   function delete($id)
   {
-    $this->db->delete('Order', array("id" => $id));
+    $this->db->delete('Device', array("id_device" => $id));
   }
 }
