@@ -63,7 +63,12 @@ Sistem yang akan digunakan untuk menjalankan aplikasi ini, membutuhkan:
 *Akan didokumentasikan nanti.*
 
 ## Pedoman Penggunaan
-*Akan didokumentasikan nanti.*
+- Pengguna masuk ke halaman utama web
+- Pengguna masuk ke menu device
+- Pengguna mengklik device yang ingin dipilih
+- Pengguna mengklik tombol add
+- Admin akan mendapat informasi permintaan device kemudian melakukan transaksi melalui aplikasi lain sebagai bantuan
+- Device yang dipilih telah berstatus dipakai
 
 ## Lisensi
 Aplikasi Sistem Informasi Rental HP (SiTAPE) dibuat untuk keperluan pemenuhan **tugas akhir** mata kuliah **Pemrograman Web** dari kelompok 5, Paralel A. Project ini dilisensikan di bawah lisensi [MIT][license-url].
