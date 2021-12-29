@@ -7,56 +7,19 @@
     <title>Rental HP - SiTAPE</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css') ?>">
     <script src="<?= base_url('assets/js/bootstrap.js') ?>"></script>
-    
-    <style>
-      main {
-        margin-bottom: 40px;
-      }
-
-      .phone-item-card {
-        width: fit-content;
-        max-width: 300px;
-        margin: 10px;
-      }
-
-      .phone-container {
-        flex-wrap: wrap;
-      }
-
-      .custom-jumbotron {
-        margin-bottom: 50px !important;
-      }
-
-      .subheader {
-        margin-top: 48px;
-        margin-bottom: 24px;
-      }
-
-      .mapouter{
-        position:relative;
-        text-align:right;
-        max-height: 250px;
-        max-width: 600px;
-      }
-
-      .gmap_canvas {
-        overflow: hidden;
-        background: none !important;
-        max-height: 250px;
-        max-width: 600px;
-      }
-
-      footer {
-        margin-top: 120px;
-      }
-
-      .footer-url {
-        text-decoration: none;
-      }
-    </style>
+    <link rel="stylesheet" href="<?= base_url('assets/css/custom.css') ?>">
 </head>
 
 <body>
+  <header class="fixed-top shadow">
+    <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+      <div class="container navbar-collapse">
+        <a class="navbar-brand text-white" href="<?= base_url() ?>"><b>SiTAPE</b></a>
+        <a class="navbar-brand text-white btn btn-outline-light" href="<?= base_url('devices') ?>">Semua Device</a>
+      </div>
+    </nav>
+  </header>
+
   <main>
     <!-- Jumbotron -->
     <div class="p-5 mb-4 bg-primary custom-jumbotron">
