@@ -17,9 +17,14 @@ class M_Device extends CI_Model
     return $this->db->get('Device')->result();
   }
 
+  function get_latest_six()
+  {
+    return $this->db->get('Device')->result();
+  }
+
   function get_one($id)
   {
-    return $this->db->get_where('Device', array('id_device' => $id))->result();
+    return $this->db->get_where('Device', array('id_device' => $id))->row();
   }
 
   function insert($data)
