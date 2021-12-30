@@ -61,8 +61,6 @@ Sistem yang akan digunakan untuk menjalankan aplikasi ini, membutuhkan:
 - PHP versi 8
 - MySQL versi 8 atau MariaDB versi 10
 
-### Instalasi
-*Akan didokumentasikan nanti.*
 
 ## Pedoman Penggunaan
 - Pengguna masuk ke halaman utama web
